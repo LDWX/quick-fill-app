@@ -1,0 +1,12 @@
+{
+  "name": "uni-ui-project",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "dependencies": {
+    "echarts": "^4.8.0",
+    "mpvue-echarts": "^0.3.2",
+    "uni-simple-router": "^1.5.4",
+    "vuex": "^3.4.0"
+  }
+}
