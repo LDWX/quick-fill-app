@@ -40,7 +40,7 @@
 		},
 		methods: {
 			chooseJudge(valuatingId, valuateName) {
-				console.log(valuatingId)
+				console.log("judgeList >> chooseJudge >> valuatingId, valuateName", valuatingId, valuateName)
 				this.$Router.push({name: 'judgeIntroduce', params: {
 						valuating_id: valuatingId,
 						valuateName: valuateName

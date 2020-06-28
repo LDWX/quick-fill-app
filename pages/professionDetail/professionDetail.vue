@@ -161,7 +161,7 @@
 					</view>
 				</view>
 				<view @click="searchMore" class="load-more">
-					<text v-show="!isLoading && this.collegeParams.page < this.totalCollege">点击加载更多</text>
+					<text v-show="!isLoading && (this.collegeParams.page < this.totalCollege)">点击加载更多</text>
 					<text v-show="isLoading">loading...</text>
 				</view>
 				
@@ -215,8 +215,10 @@
 				this.collegeParams.page++
 				this.queryMajorCollege()
 					.then(res => {
-						this.majorCollegeList = res.schools
-						this.totalCollege = res.page
+						this.majorCollegeList = this.majorCollegeList.concat(res.schools)
+						this.totalCollege = res.totalPage
+						this.collegeParams.page = res.page
+						this.isLoading = false
 					})
 			},
 			chooseSchool(school) {
@@ -236,7 +238,8 @@
 						this.queryMajorCollege()
 							.then(res => {
 								this.majorCollegeList = res.schools
-								this.totalCollege = res.page			
+								this.totalCollege = res.totalPage
+								this.collegeParams.page = res.page			
 							})
 						break;					
 				}
@@ -252,7 +255,8 @@
 				this.queryMajorCollege()
 					.then(res => {
 						this.majorCollegeList = res.schools
-						this.totalCollege = res.page			
+						this.totalCollege = res.totalPage
+						this.collegeParams.page = res.page
 					})
 			},
 			queryMajorCollege() {

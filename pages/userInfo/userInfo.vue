@@ -21,7 +21,7 @@
 			</view>
 			
 		</view>
-		<button @click="clear" style="margin-top: 20rpx;" type="primary" class="confirm">清除缓存</button>
+		<button @click="clear" style="margin-top: 20rpx;" type="primary" class="confirm">退出登陆</button>
 		
 		<uni-popup ref="popup" type="top">
 			<view class="tips-message">
@@ -43,19 +43,21 @@
 		},
 		methods: {
 			clear() {
-				uni.removeStorage({
-					key: "recommandObj"
-				})
-				uni.removeStorage({
-					key: "choicePool"
-				})
-				// uni.clearStorage()
+				// uni.removeStorage({
+				// 	key: "recommandObj"
+				// })
+				// uni.removeStorage({
+				// 	key: "choicePool"
+				// })
+				
+				uni.clearStorage()
 				
 				this.$refs.popup.open()
-				this.msg = "缓存清除成功"
+				// this.msg = "缓存清除成功"
+				this.msg = "正在退出账号"
 				setTimeout(() => {
 					this.$refs.popup.close();			
-					// this.$Router.push({name: "login"})
+					this.$Router.push({name: "login"})
 				}, 1500)
 				
 			},
@@ -84,6 +86,7 @@
 				this.$Router.push({name: page})
 			},
 			jump2ValuateResult(valuateName) {
+				
 				this.$Router.push({name: "valuateResult", params: { valuateName: valuateName }})
 			},
 			chooseValuating() {

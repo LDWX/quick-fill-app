@@ -3030,7 +3030,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("清除缓存")]
+        [_vm._v("退出登陆")]
       ),
       _c(
         "uni-popup",

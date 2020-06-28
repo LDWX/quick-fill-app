@@ -49,32 +49,6 @@
 			})
 		},
 		methods: {
-			login() {
-				const vm = this
-				uni.request({
-					url: vm.apiHost + "/common/login",
-					data: {
-						name: vm.account,
-						password: vm.password
-					},
-					header: {
-						"Content-Type": "application/x-www-form-urlencoded"
-					},
-					method: "POST",
-					success: res => {
-						console.log("login page login() >> header::: ", res.header)
-						if (res.statusCode == 200) {
-							uni.setStorageSync("userInfo", res.data)
-						}else {
-							this.showMessage = true
-							this.statusCode = res.statusCode
-						}
-						console.log("success: ", res)
-						console.log("token:: ", vm.token)
-					}
-				})
-				
-			},
 			submit() {
 				let entries = Object.entries(this.answerObj)
 				if (entries.length < this.questionList.length) {
@@ -105,15 +79,6 @@
 					},
 					success: res => {
 						if (res.statusCode == 200) {
-							// uni.getStorage({
-							// 	key: 'accountInfo',
-							// 	success: (res) => {
-							// 		this.account = res.data.account
-							// 		this.password = res.data.password
-							// 		this.login()									
-							// 	}
-							// })
-							console.log("valuatePage >>> submit valuateName:::  ", this.valuateName)
 							uni.setStorage({
 								key: "valuateResult-" + this.valuateName,
 								data: res.data
